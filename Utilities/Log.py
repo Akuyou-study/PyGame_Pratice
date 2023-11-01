@@ -1,4 +1,4 @@
-import pygame
+from Games.BallGame.BallClass import BallClass
 
 class LogClass:
     tag_list = ["[Debug]", "[Info]", "[Warning]", "[ERROR]"]
@@ -11,6 +11,10 @@ class LogClass:
 
         print(tag + ": " + context)
 
-    def printPosition(self, pos: pygame.Vector2):
-        LogClass.log(self, "The x of position is: " + str(pos.x), 0)
-        LogClass.log(self, "The y of position is: " + str(pos.y), 0)
+    def printBallAttr(self, ball: BallClass):
+        self.log("The survived is: " + str(ball.survived), 0)
+        self.log("The x axis is: " + str(ball.pos_x), 0)
+        self.log("The y axis is: " + str(ball.pos_y), 0)
+        self.log("The position is: " + str(ball.position), 0)
+        self.log("The color is: " + ball.color, 0)
+        self.log("The radius is: " + str(ball.radius), 0)

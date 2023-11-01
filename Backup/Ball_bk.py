@@ -1,7 +1,8 @@
 import pygame
 import random
-import Log
 import time
+
+from Utilities import Log
 
 pygame.init()
 logRecord = Log.LogClass()
@@ -81,25 +82,26 @@ class Ball:
             logRecord.log("Press d key", 0)
             logRecord.printPosition(self.position)
             
+def gamingRunning():
+    
 
+    player_obj = Ball(screen.get_width() / 2, screen.get_height() / 2, "white", False)
 
-player_obj = Ball(screen.get_width() / 2, screen.get_height() / 2, "white", False)
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                # logRecord.log(str(keys), 3)
+                running = False
 
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            # logRecord.log(str(keys), 3)
-            running = False
+        screen.fill("black")
 
-    screen.fill("black")
+        player_obj.draw()
+        player_obj.move()
 
-    player_obj.draw()
-    player_obj.move()
+        pygame.display.flip()
 
-    pygame.display.flip()
+        # clock.tick(60)
 
-    # clock.tick(60)
-
-    dt = clock.tick(60) / 1000
-
-pygame.QUIT()
+        dt = clock.tick(60) / 1000
+    
+    pygame.QUIT()
